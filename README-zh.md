@@ -5,6 +5,7 @@
 ## 介绍
 
 Windows 11 经典右键单击菜单编辑器。一键将你的windows11右键菜单改回windows 10旧版样式。
+![](https://cdn.jsdelivr.net/gh/openHacking/static-files@main/img/16409371544461640937154438.png)
 ## 环境
 
 - [Python 3.10](https://www.python.org/downloads/)
