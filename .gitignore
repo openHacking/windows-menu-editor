@@ -1,0 +1,29 @@
+#ide
+*.DS_Store
+.idea
+# .vscode
+
+
+dist
+build
+lib
+docs
+__pycache__
+
+# Logs
+logs
+*.log
+
+# Runtime config
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# dotenv environment variables file
+.env
+
+.history
+# examples
+
+*.spec
