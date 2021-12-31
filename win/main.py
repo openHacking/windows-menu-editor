@@ -2,7 +2,6 @@ import os
 from tkinter import *
 from tkinter import ttk
 import subprocess
-from subprocess import Popen, PIPE, STDOUT
 
 # reference https://stackoverflow.com/a/34466743
 class CustomButton(Label):
@@ -94,24 +93,22 @@ class Win:
     # exec bat
     def useClassic(self,*args):
 
-        # os.system(self.classic)
-        subprocess.Popen(self.classic)
-
-        # not working
-        # process = Popen(["cmd"], shell=False, stdout=PIPE, stdin=PIPE, stderr=STDOUT)
-
-        # commands = ("reg.exe delete 'HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}' /f\n"
-        #             "taskkill /IM explorer.exe /F\n"
-        #             "explorer\n"
-        #             )
-        # outs, errs = process.communicate(commands.encode("gbk"))
-        # content = [z.strip() for z in outs.decode("gbk").split("\n") if z]
-        # print(*content,sep="\n")
+        # hide cmd window
+        # reference https://stackoverflow.com/a/7006424
+        si = subprocess.STARTUPINFO()
+        si.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+        #si.wShowWindow = subprocess.SW_HIDE # default
+        subprocess.call(self.classic, startupinfo=si)
 
     def useDefault(self,*args):
 
         # os.system(self.default)
-        subprocess.Popen(self.default)
+        # subprocess.Popen(self.default)
+
+        si = subprocess.STARTUPINFO()
+        si.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+        #si.wShowWindow = subprocess.SW_HIDE # default
+        subprocess.call(self.default, startupinfo=si)
 
 # sets up the main application window
 root = Tk()
