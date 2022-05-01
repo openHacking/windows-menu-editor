@@ -2,6 +2,7 @@ import os
 from tkinter import *
 from tkinter import ttk
 import subprocess
+import webbrowser
 
 # reference https://stackoverflow.com/a/34466743
 class CustomButton(Label):
@@ -68,7 +69,7 @@ class Win:
         # frame width
         ww = 380
         # frame height
-        wh = 180
+        wh = 260
         x = (sw-ww) / 2
         y = (sh-wh) / 2 - 20
 
@@ -90,6 +91,11 @@ class Win:
         # default button
         defaultButton = CustomButton(root, text="Change to Win11 Default Menu",foreground='#1a1a1a',hoverBackground="#ede9e5",background='#fcfbfa',handleClick=self.useDefault)
         defaultButton.grid(column=0, row=1, columnspan=2, sticky=(N, W), padx=5,pady=20)
+
+        # link button
+        linkButton = CustomButton(root, text="Follow the author",foreground='#1a1a1a',hoverBackground="#67c23a",background='#c2e7b0',handleClick=self.openLink)
+        linkButton.grid(column=0, row=2, columnspan=2, sticky=(N, W), padx=5,pady=20)
+
     # exec bat
     def useClassic(self,*args):
 
@@ -109,6 +115,12 @@ class Win:
         si.dwFlags |= subprocess.STARTF_USESHOWWINDOW
         #si.wShowWindow = subprocess.SW_HIDE # default
         subprocess.call(self.default, startupinfo=si)
+    
+
+    def openLink(self,*args):
+        webbrowser.open_new('https://lwebapp.com/')
+        
+    
 
 # sets up the main application window
 root = Tk()
